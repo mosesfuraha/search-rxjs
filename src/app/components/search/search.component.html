@@ -1,0 +1,20 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search for anything"
+    [formControl]="searchInput"
+  />
+  <button type="submit">Search</button>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<ng-container *ngIf="filteredPosts$ | async as posts; else loading">
+  <app-user-posts [userPosts]="posts"></app-user-posts>
+</ng-container>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

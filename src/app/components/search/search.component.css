@@ -1,0 +1,40 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.search-container input[type="text"] {
+  width: 250px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #8f19e8;
+}
+
+.search-container button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #8f19e8;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+  background-color: #a445ed;
+}
+.error-message{
+  color: red;
+  text-align: center;
+}
