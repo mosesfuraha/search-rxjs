@@ -11,10 +11,13 @@
   {{ errorMessage }}
 </div>
 
-<ng-container *ngIf="filteredPosts$ | async as posts; else loading">
-  <app-user-posts [userPosts]="posts"></app-user-posts>
-</ng-container>
+<ng-container *ngIf="searchResults$ | async as results">
+  <ng-container *ngIf="isLoading; else showResults">
+    <p>Loading...</p>
+  </ng-container>
+  <ng-template #showResults>
+    <app-user-detail [user]="results.user"></app-user-detail>
 
-<ng-template #loading>
-  <p>Loading...</p>
-</ng-template>
+    <app-user-posts [userPosts]="results.posts"></app-user-posts>
+  </ng-template>
+</ng-container>

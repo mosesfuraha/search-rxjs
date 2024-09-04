@@ -1,6 +1,6 @@
 import { User, UserPost } from './../models/user';
 import { Injectable } from '@angular/core';
-import { delay, map, Observable, of } from 'rxjs';
+import { combineLatest, delay, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -96,7 +96,7 @@ export class UserService {
     },
   ];
 
-  private user: User = {
+  user: User = {
     id: 1,
     name: 'Furaha',
     email: 'furaha@gmail.com',
@@ -107,16 +107,26 @@ export class UserService {
   getUserDetails(): Observable<User> {
     return of(this.user);
   }
-  searchPosts(term: string): Observable<UserPost[]> {
-    return of(this.userPostData).pipe(
+  searchCombined(
+    term: string = ''
+  ): Observable<{ user: User | null; posts: UserPost[] }> {
+    return combineLatest([this.getUserDetails(), this.getUserPosts()]).pipe(
       delay(500),
-      map((posts) =>
-        posts.filter(
+      map(([user, posts]) => {
+        const filteredPosts = posts.filter(
           (post) =>
             post.title.toLowerCase().includes(term.toLowerCase()) ||
             post.description.toLowerCase().includes(term.toLowerCase())
-        )
-      )
+        );
+        const userMatches =
+          user.name.toLowerCase().includes(term.toLowerCase()) ||
+          user.email.toLowerCase().includes(term.toLowerCase());
+
+        return {
+          user: userMatches ? user : null,
+          posts: filteredPosts,
+        };
+      })
     );
   }
 }
