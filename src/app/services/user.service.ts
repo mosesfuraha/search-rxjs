@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of, combineLatest } from 'rxjs';
 import { catchError, delay, map, retry, tap } from 'rxjs/operators';
 import { User, UserPost } from './../models/user';
@@ -18,6 +18,7 @@ export class UserService {
       delay(500),
       retry(3),
       tap((posts) => console.log('Fetched posts:', posts)),
+      //use tap to create side effects
       catchError(this.handleError<UserPost[]>('getUserPosts', []))
     );
   }
