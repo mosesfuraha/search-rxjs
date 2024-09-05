@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Furaha",
+    "email": "furaha@gmail.com",
+    "createdAt": "2024-09-01T08:30:00Z",
+    "profilePicture": "https://randomuser.me/api/portraits/women/1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ntwali",
+    "email": "ntwali@gmail.com",
+    "createdAt": "2024-09-02T09:15:00Z",
+    "profilePicture": "https://randomuser.me/api/portraits/men/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Mutesi",
+    "email": "mutesi@gmail.com",
+    "createdAt": "2024-09-03T10:00:00Z",
+    "profilePicture": "https://randomuser.me/api/portraits/women/3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Karangwa",
+    "email": "karangwa@gmail.com",
+    "createdAt": "2024-09-04T11:45:00Z",
+    "profilePicture": "https://randomuser.me/api/portraits/men/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mukamana",
+    "email": "mukamana@gmail.com",
+    "createdAt": "2024-09-05T12:30:00Z",
+    "profilePicture": "https://randomuser.me/api/portraits/women/5.jpg"
+  }
+]

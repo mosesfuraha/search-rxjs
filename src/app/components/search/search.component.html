@@ -16,8 +16,13 @@
     <p>Loading...</p>
   </ng-container>
   <ng-template #showResults>
-    <app-user-detail [user]="results.user"></app-user-detail>
+    <ng-container *ngIf="!noResults; else noResultsTemplate">
+      <app-user-detail [user]="results.user"></app-user-detail>
 
-    <app-user-posts [userPosts]="results.posts"></app-user-posts>
+      <app-user-posts [userPosts]="results.posts"></app-user-posts>
+    </ng-container>
   </ng-template>
 </ng-container>
+<ng-template #noResultsTemplate>
+  <app-no-results></app-no-results>
+</ng-template>

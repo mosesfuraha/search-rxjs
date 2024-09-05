@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit {
     posts: [],
   });
   isLoading: boolean = false;
+  noResults: boolean = false;
 
   constructor(private userPostService: UserService) {}
 
@@ -36,17 +37,25 @@ export class SearchComponent implements OnInit {
       debounceTime(500),
       startWith(''),
       filter((term: string | null): term is string => term !== null),
-      tap(() => (this.isLoading = true)),
+      tap(() => {
+        this.isLoading = true;
+        this.noResults = false;
+      }),
       switchMap((term) => {
         if (term.trim().length < 3 && term.trim().length > 0) {
           this.errorMessage = 'Error: Start with 3 characters and above';
           this.isLoading = false;
+          this.noResults = true;
           return of({ user: null, posts: [] });
         } else {
           this.errorMessage = '';
-          return this.userPostService
-            .searchCombined(term)
-            .pipe(tap(() => (this.isLoading = false)));
+          return this.userPostService.searchCombined(term).pipe(
+            tap((results) => {
+              this.isLoading = false;
+
+              this.noResults = !results.user && results.posts.length === 0;
+            })
+          );
         }
       })
     );

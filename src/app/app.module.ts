@@ -10,6 +10,9 @@ import { SearchComponent } from './components/search/search.component';
 import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
 import { UserPostsComponent } from './pages/user/user-posts/user-posts.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NoResultsComponent } from './no-results/no-results.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -18,8 +21,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchComponent,
     UserDetailComponent,
     UserPostsComponent,
+    NoResultsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

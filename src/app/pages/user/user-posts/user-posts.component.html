@@ -1,7 +1,4 @@
-<div
-  *ngIf="userPosts && userPosts.length > 0; else noResults"
-  class="posts-container"
->
+<div *ngIf="userPosts" class="posts-container">
   <div *ngFor="let post of userPosts" class="post-item">
     <img [src]="post.image" alt="{{ post.title }}" class="post-image" />
     <div class="post-content">
@@ -10,6 +7,3 @@
     </div>
   </div>
 </div>
-<ng-template #noResults>
-  <p> Oops!! No results found.</p>
-</ng-template>
