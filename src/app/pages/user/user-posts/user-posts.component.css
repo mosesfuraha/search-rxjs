@@ -1,8 +1,14 @@
-.posts-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.main-container {
+  display: flex;
   gap: 20px;
   padding: 20px;
+}
+
+.posts-container {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
 }
 
 .post-item {
@@ -13,46 +19,128 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  padding: 10px;
 }
 
 .post-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .post-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .post-content {
-  padding: 15px;
+  padding: 10px;
   text-align: center;
 }
 
 .post-title {
-  font-size: 1.2em;
-  margin: 10px 0;
+  font-size: 1.1em;
+  margin: 8px 0;
   color: #333;
 }
 
 .post-description {
-  font-size: 1em;
+  font-size: 0.95em;
   color: #666;
+  height: 60px; /* Fixed height */
+  overflow: hidden; /* Hides overflowing text */
+  text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+  display: -webkit-box; /* Creates a box for multi-line truncation */
+  -webkit-line-clamp: 3; /* Limits the description to 3 lines */
+  -webkit-box-orient: vertical; /* Vertical orientation for multi-line truncation */
 }
-p{
-    margin-bottom: 1em;
-    text-align: center;
+
+p {
+  margin-bottom: 0.8em;
+  text-align: center;
 }
+
+.cart-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-to-cart-button {
+  background-color: #8f19e8;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #7b14d1;
+}
+
+.increment-decrement-container {
+  display: flex;
+  align-items: center;
+}
+
+.decrement-button,
+.increment-button {
+  background-color: #a445ed;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.decrement-button:hover,
+.increment-button:hover {
+  background-color: #932ed0;
+}
+
+.quantity {
+  margin: 0 8px;
+  font-size: 0.9em;
+}
+
+.cart-sidebar {
+  flex: 1;
+  max-width: 280px;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  position: sticky;
+  top: 20px;
+  height: calc(100vh - 40px);
+}
+
 @media (max-width: 600px) {
-  .post-item {
+  .main-container {
     flex-direction: column;
   }
 
+  .post-item {
+    width: 100%;
+  }
+
   .post-image {
-    height: 150px;
+    height: 120px;
+  }
+
+  .cart-sidebar {
+    max-width: 100%;
   }
 }

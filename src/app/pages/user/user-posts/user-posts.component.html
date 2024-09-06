@@ -1,9 +1,31 @@
-<div *ngIf="userPosts" class="posts-container">
-  <div *ngFor="let post of userPosts" class="post-item">
-    <img [src]="post.image" alt="{{ post.title }}" class="post-image" />
-    <div class="post-content">
-      <h3 class="post-title">{{ post.title }}</h3>
-      <p class="post-description">{{ post.description }}</p>
+<div class="main-container">
+  <div *ngIf="userPosts" class="posts-container">
+    <div *ngFor="let post of userPosts" class="post-item">
+      <img [src]="post.image" alt="{{ post.title }}" class="post-image" />
+      <div class="post-content">
+        <h3 class="post-title">{{ post.title }}</h3>
+        <p class="post-description">{{ post.description }}</p>
+        <div class="cart-actions">
+          <button
+            *ngIf="!post.inCart"
+            (click)="addToCart(post)"
+            class="add-to-cart-button"
+          >
+            Add to Cart
+          </button>
+          <div *ngIf="post.inCart" class="increment-decrement-container">
+            <button (click)="decrement(post)" class="decrement-button">
+              -
+            </button>
+            <span class="quantity">{{ post.quantity }}</span>
+            <button (click)="increment(post)" class="increment-button">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <app-add-to-cart class="cart-sidebar"></app-add-to-cart>
 </div>

@@ -1,0 +1,34 @@
+<div class="main-container">
+  <div class="cart-sidebar">
+    <h2>Cart Items</h2>
+
+    <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+      Your cart is empty. Add some items to get started!
+    </div>
+
+    <div *ngIf="cartItems.length > 0">
+      <button (click)="clearAll()" class="clear-all-button">Clear All</button>
+    </div>
+
+    <div *ngFor="let cartItem of cartItems" class="cart-item">
+      <img
+        [src]="cartItem.image"
+        alt="{{ cartItem.title }}"
+        class="cart-item-image"
+      />
+      <div class="cart-item-content">
+        <h4>{{ cartItem.title }}</h4>
+        <div class="cart-quantity">
+          <button (click)="decrement(cartItem)" class="decrement-button">
+            -
+          </button>
+          <span class="quantity">{{ cartItem.quantity }}</span>
+          <button (click)="increment(cartItem)" class="increment-button">
+            +
+          </button>
+        </div>
+        <button (click)="removeFromCart(cartItem)" class="remove-button">×</button>
+      </div>
+    </div>
+  </div>
+</div>

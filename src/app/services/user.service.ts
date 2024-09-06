@@ -18,7 +18,6 @@ export class UserService {
       delay(500),
       retry(3),
       tap((posts) => console.log('Fetched posts:', posts)),
-      //use tap to create side effects
       catchError(this.handleError<UserPost[]>('getUserPosts', []))
     );
   }

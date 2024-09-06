@@ -12,6 +12,7 @@ import { UserPostsComponent } from './pages/user/user-posts/user-posts.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoResultsComponent } from './no-results/no-results.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
 
 
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserDetailComponent,
     UserPostsComponent,
     NoResultsComponent,
+    AddToCartComponent,
   ],
   imports: [
     BrowserModule,

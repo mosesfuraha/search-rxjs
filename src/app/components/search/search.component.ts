@@ -7,9 +7,8 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
-import { UserService } from '../../services/user.service';
+import { Product, ProductService } from '../../services/product.service';
 import { Observable, of } from 'rxjs';
-import { UserPost, User } from '../../models/user';
 
 @Component({
   selector: 'app-search',
@@ -19,14 +18,14 @@ import { UserPost, User } from '../../models/user';
 export class SearchComponent implements OnInit {
   searchInput = new FormControl('');
   errorMessage: string = '';
-  searchResults$: Observable<{ user: User | null; posts: UserPost[] }> = of({
+  searchResults$: Observable<{ user: null; posts: Product[] }> = of({
     user: null,
     posts: [],
   });
   isLoading: boolean = false;
   noResults: boolean = false;
 
-  constructor(private userPostService: UserService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.setupSearch();
@@ -49,11 +48,10 @@ export class SearchComponent implements OnInit {
           return of({ user: null, posts: [] });
         } else {
           this.errorMessage = '';
-          return this.userPostService.searchCombined(term).pipe(
+          return this.productService.searchProducts(term).pipe(
             tap((results) => {
               this.isLoading = false;
-
-              this.noResults = !results.user && results.posts.length === 0;
+              this.noResults = results.posts.length === 0;
             })
           );
         }
