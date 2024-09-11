@@ -1,0 +1,31 @@
+<div class="main-container">
+  <div *ngIf="products$ | async as products" class="posts-container">
+    <div *ngFor="let product of products" class="post-item">
+      <img [src]="product.image" alt="{{ product.title }}" class="post-image" />
+      <div class="post-content">
+        <h3 class="post-title">{{ product.title }}</h3>
+        <p class="post-description">{{ product.description }}</p>
+        <div class="cart-actions">
+          <button
+            *ngIf="!product.inCart"
+            (click)="addToCart(product)"
+            class="add-to-cart-button"
+          >
+            Add to Cart
+          </button>
+          <div *ngIf="product.inCart" class="increment-decrement-container">
+            <button (click)="decrement(product)" class="decrement-button">
+              -
+            </button>
+            <span class="quantity">{{ product.quantity }}</span>
+            <button (click)="increment(product)" class="increment-button">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-add-to-cart class="cart-sidebar"></app-add-to-cart>
+</div>

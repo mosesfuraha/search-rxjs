@@ -16,6 +16,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  
   searchInput = new FormControl('');
   errorMessage: string = '';
   searchResults$: Observable<{ user: null; posts: Product[] }> = of({

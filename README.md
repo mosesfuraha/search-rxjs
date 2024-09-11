@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
+## Project Overview
+
+RxjsSearch is an Angular application that demonstrates the use of RxJS observables, particularly BehaviorSubject, for state management and implementing add-to-cart functionality. The project fetches product data from the Fake Store API and allows users to search for products and add them to their cart.
+
+Key features:
+
+- Product listing and search functionality
+- Add to cart feature
+- Reactive state management using BehaviorSubject
+
+You can view the deployed application here: [https://add-to-cart-hazel.vercel.app/](https://add-to-cart-hazel.vercel.app/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -14,14 +26,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Project Structure
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The project includes a `ProductService` that handles fetching products from the Fake Store API and provides search functionality. The service uses RxJS operators like `retry`, `catchError`, and `map` for error handling and data transformation.

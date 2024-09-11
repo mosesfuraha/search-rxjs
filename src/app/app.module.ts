@@ -7,23 +7,20 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
-import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
-import { UserPostsComponent } from './pages/user/user-posts/user-posts.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoResultsComponent } from './no-results/no-results.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
-
-
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    UserDetailComponent,
-    UserPostsComponent,
     NoResultsComponent,
     AddToCartComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,10 @@
 <div class="search-container">
   <input
     type="text"
-    placeholder="Search for the best products.."
+    placeholder="Search for the best products..."
     [formControl]="searchInput"
   />
-  <button type="submit">Search</button>
+  <button type="button" (click)="setupSearch()">Search</button>
 </div>
 
 <div *ngIf="errorMessage" class="error-message">
@@ -17,7 +17,7 @@
   </ng-container>
   <ng-template #showResults>
     <ng-container *ngIf="!noResults; else noResultsTemplate">
-      <app-user-posts></app-user-posts>
+      <app-product-list ></app-product-list>
     </ng-container>
   </ng-template>
 </ng-container>
